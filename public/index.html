@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Head bölümü -->
+    <!-- ... -->
+  </head>
+  <body>
+    <div data-cursor-dot class="cursor-dot"></div>
+    <div data-cursor-outline class="cursor-outline"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const cursorDot = document.querySelector("[data-cursor-dot]");
+        const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+        window.addEventListener("mousemove", function(e) {
+          const posX = e.clientX;
+          const posY = e.clientY;
+
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          cursorOutline.style.left = `${posX}px`;
+          cursorOutline.style.top = `${posY}px`;
+
+          cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`,
+          }, { duration: 500, fill: "forwards"});
+
+
+        });
+      });
+    </script>
+  </body>
+</html>
